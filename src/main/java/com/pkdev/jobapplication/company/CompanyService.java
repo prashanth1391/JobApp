@@ -7,4 +7,5 @@ public interface CompanyService {
     boolean updateCompanyById(Long id, Company company);
     void createCompany(Company company);
     boolean deleteCompanyById(Long id);
+    Company getCompanyById(Long id);
 }

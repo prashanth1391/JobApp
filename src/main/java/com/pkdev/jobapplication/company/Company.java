@@ -3,6 +3,7 @@ package com.pkdev.jobapplication.company;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pkdev.jobapplication.job.Job;
+import com.pkdev.jobapplication.review.Review;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,13 +19,17 @@ public class Company {
     @OneToMany(mappedBy = "company")
     @JsonIgnore
     private List<Job> jobs;
+    @OneToMany(mappedBy = "company")
+    private List<Review> reviews;
 
-    public Company(Long id, String name, String description, List<Job> jobs) {
+    public Company(Long id, String name, String description, List<Job> jobs, List<Review> reviews) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.jobs = jobs;
+        this.reviews = reviews;
     }
+
 
     public Company() {
     }
@@ -61,5 +66,11 @@ public class Company {
         this.jobs = jobs;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
 
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 }
